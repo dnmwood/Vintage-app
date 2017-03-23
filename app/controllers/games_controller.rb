@@ -15,9 +15,11 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-
-    if game.save
-      redirect_to 'games#index', notice: "You have added a game."
+    raise 'hit'
+    if @game.save
+      redirect_to 'users#show', notice: "You have added a game."
+    else
+      flash[:nope]
     end
   end
 
@@ -28,6 +30,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:games).permit(:title, :quantity, :system, :condition)
+    params.require(:game).permit(:title, :quantity, :system, :condition)
   end
 end
