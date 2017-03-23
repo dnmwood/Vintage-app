@@ -10,6 +10,10 @@ class UserController < ApplicationController
     redirect_to new_user_game_path(@user)
   end
 
+  def show
+    @user = User.find_by(params[:user_id])
+    @games = @user.games
+  end
 
   private
   def user_params
