@@ -1,4 +1,10 @@
 <h1>Games index page</h1>
-<p>
-  <%= link_to "Make an Account", new_user_registration_path %>
-</p>
+
+<ul>
+<% @games.each do |game| %>
+  <li><%= game.title %></li>
+  <li><%= game.quantity %></li>
+  <li><%= game.system %></li>
+  <li><%= game.condition %></li>
+<% end %>
+</ul>

@@ -2,10 +2,6 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
-
-    if current_user
-      redirect_to "users#new"
-    end
   end
 
   def new
@@ -13,11 +9,17 @@ class GamesController < ApplicationController
     @user = current_user
   end
 
+  def update
+    @user = current_user
+    @games = @user.games
+  end
+
   def create
+    @user = current_user
     @game = Game.new(game_params)
-    raise 'hit'
+    @game.user_id = current_user.id
     if @game.save
-      redirect_to 'users#show', notice: "You have added a game."
+      redirect_to user_path(@user), notice: "You have added a game."
     else
       flash[:nope]
     end
