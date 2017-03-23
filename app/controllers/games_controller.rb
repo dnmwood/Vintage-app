@@ -2,11 +2,15 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+
+    if current_user
+      redirect_to "users#new"
+    end
   end
 
   def new
     @game = Game.new
-    @game.save
+    @user = current_user
   end
 
   def create
@@ -24,6 +28,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:games).permit(:title, :quantity)
+    params.require(:games).permit(:title, :quantity, :system, :condition)
   end
 end

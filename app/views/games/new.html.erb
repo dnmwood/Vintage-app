@@ -1,2 +1,21 @@
-<h1>Games#new</h1>
-<p>Find me in app/views/games/new.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 well">
+      <div class="form-group">
+        <%= form_for [@user, @game] do |f| %>
+          <%= f.label "Title" %>
+          <%= f.text_field :title, :class => "form-control" %>
+          <%= f.label "System" %>
+          <%= f.text_field :system, :class => "form-control" %>
+          <%= f.label "Quantity" %>
+          <%= f.number_field :quantity, :class => "form-control" %>
+          <%= f.label "Condition" %>
+          <%= f.text_field :condition, :class => "form-control" %>
+          <%= f.submit "Submit", :class => "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>

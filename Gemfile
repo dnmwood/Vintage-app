@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# bootstrap forms
+gem 'bootstrap_form'
 # Authentication
 gem 'devise'
 # Use Postgres as the database for Active Record
